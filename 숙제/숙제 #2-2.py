@@ -24,9 +24,14 @@ def front_ok(front):
         return False
 
 def back_ok(s):
-    if int(s[13]) == 11 - ((2 * int(s[0]) + 3 * int(s[1]) + 4 * int(s[2]) + 5 * int(s[3])\
+    m = int(s[13])
+    if m == 11 - ((2 * int(s[0]) + 3 * int(s[1]) + 4 * int(s[2]) + 5 * int(s[3])\
      + 6 * int(s[4]) + 7 * int(s[5]) + 8 * int(s[7]) + 9 * int(s[8]) + 2 * int(s[9])\
       + 3 * int(s[10]) + 4 * int(s[11]) + 5 * int(s[12])) % 11):
+        return True
+    elif (0 <= m <= 9 and m == int(s[13])):
+        return True
+    elif (10 <= m <= 11 and m == int(s[13]) + 10):
         return True
     else:
         return False
