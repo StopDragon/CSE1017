@@ -14,7 +14,9 @@ def smallerOdd(x,y):
 
 def smallestOdd(x,y,z):
     if z % 2 == 1:
-        if smallerOdd(x,y) >= z:
+        if x % 2 != 1 and y % 2 != 1:
+            return z
+        elif smallerOdd(x,y) >= z:
             return z
         elif smallerOdd(x,y) < z:
             return smallerOdd(x,y)
