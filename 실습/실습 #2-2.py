@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 둘 중 작은 수 찾기 함수 
 def smaller(x,y):
     if x <= y:
         return x

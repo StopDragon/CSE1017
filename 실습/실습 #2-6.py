@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 고정소수점수 문자열 확인 함수(음수 포함) 
 def isfloat(s):
     P = s.partition('.')
     if '.' > P[0] >= '-':

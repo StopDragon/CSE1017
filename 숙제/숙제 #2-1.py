@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 셋 중 가장 작은 홀수 찾기 함수 
 def smallerOdd(x,y):
     if x % 2 == 1 and y % 2 == 1:
         if x >= y:

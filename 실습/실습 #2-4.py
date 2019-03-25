@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 셋 중 가장 작은 수 찾기 함수 ('smaller' 확인 버전) 
 def smallest(x,y,z):
     return smaller()
 

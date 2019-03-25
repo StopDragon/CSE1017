@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 윤년 확인 함수 
 def isleapyear(year):
     if year >= 0:
         if year < 100:
