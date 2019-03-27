@@ -8,15 +8,15 @@ def front_ok(front):
                     return True
                 else:
                     return False
-            elif int(front[4:6]) <= 28:
+            elif (0 < int(front[4:6]) <= 28):
                 return True
             else:
                 return False
         elif front[2:4] == '01' or '03' or '05' or '07' or '08' or '10' or '12':
-            if int(front[4:6]) <= 31:
+            if (0 < int(front[4:6]) <= 31):
                 return True
         elif front[2:4] == '04' or '06' or '09' or '11':
-            if int(front[4:6]) <= 30:
+            if (0 < int(front[4:6]) <= 30):
                 return True
         else:
             return False
