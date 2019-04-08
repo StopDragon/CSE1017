@@ -6,7 +6,6 @@ def insert(n,ss):
             return [ss[0]] + insert(n,ss[1:])
     else:
         return [n]
-
 def insertionsort(s) :
     ss = []
     for i in s:
