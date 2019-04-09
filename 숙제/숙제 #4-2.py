@@ -1,10 +1,38 @@
 def radixsort(ds,length):
-    if length = 3:
+    if ds!=[]:
+        temp = length
+    else:
+        return []
 
-    elif length = 4:
+    n=[[],[],[],[],[],[],[],[],[],[]]
+    nn=[]
+    while length>=1:
+        for one in ds:
+            if one[-1] = 0:
+                one[-1] = n[0]
+            elif one[-1] = 1:
+                one[-1] = n[1]
+            elif one[-1] = 2:
+                one[-1] = n[2]
+            elif one[-1] = 3:
+                one[-1] = n[3]
+            elif
+
+
+        for :
+            for :
+
+        n=[[],[],[],[],[],[],[],[],[],[]]
+        length=length-1
+
 
     else:
         return None
+
+
+    for one in ds:
+
+
     return ds
 
 
