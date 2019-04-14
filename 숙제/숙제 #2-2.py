@@ -39,4 +39,3 @@ def back_ok(s):
 def isRRN(s):
     (front, mid, back) = s.partition("-")
     return front_ok(front) and mid == "-" and back_ok(s)
-print(isRRN('001013-3703813'))
