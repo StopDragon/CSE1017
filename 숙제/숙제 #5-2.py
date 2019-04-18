@@ -1,11 +1,18 @@
 # -*- coding: utf-8 -*-
-import random
-def testBinSearchClosest():
-    db = random.sample(range(500),100)
-    print("Binary search closest function test")
-    db.sort()
-    print(db)
-    for _ in range(10):
-        key = random.randrange(500)
-        index = binSearchClosest(db, key)
-        print("The closest value to", key, ":", db[index], "at index", index)
+def binSearchClosest(list,key):
+    position = 0
+    temp = key**10
+    if list == []:
+        return None
+    for a in range(len(list)-1):
+        first = abs(list[a] - key)
+        second = abs(list[a+1] - key)
+        if list[0] == key:
+            return position
+        elif first > second and temp > second:
+            position = a + 1
+            temp = second
+        elif first < second and temp > first:
+            position = a + 1
+            temp = first
+    return (position)
