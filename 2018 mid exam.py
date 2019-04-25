@@ -39,3 +39,14 @@ def count_upto(n):
         count_upto(n-1)
         ns = ns + [n]
     return ns
+
+# no.5
+def zippo(xs,ys):
+    def loop(xs,ys,zs):
+        if xs == [] or ys == []:
+            return xs + ys
+        else:
+            return [xs[0]+ys[0]] + zippo(xs[1:],ys[1:])
+    return loop(xs,ys,[])
+
+#
