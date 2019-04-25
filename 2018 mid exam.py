@@ -42,11 +42,63 @@ def count_upto(n):
 
 # no.5
 def zippo(xs,ys):
-    def loop(xs,ys,zs):
+    def loop(xs,ys):
         if xs == [] or ys == []:
             return xs + ys
         else:
             return [xs[0]+ys[0]] + zippo(xs[1:],ys[1:])
-    return loop(xs,ys,[])
+    return loop(xs,ys)
 
-#
+# no.6
+def zippo(xs,ys):
+    zs = []
+    while xs != [] and ys != []:
+        zs = zs + [xs[0]+ys[0]]
+        xs, ys = xs[1:],ys[1:]
+    return zs + xs + ys
+
+# no.7
+def blast(ns):
+    bs = []
+    for z in ns:
+        y = []
+        for a in range(z):
+            y.append(z)
+        bs = bs + y
+    return bs
+
+# no.8
+def union(xs,ys):
+    zs = []
+    for x in xs:
+        if x not in ys:
+            zs.append(x)
+    return zs+ys
+
+# no.9
+def diff(xs,ys):
+    zs = []
+    for x in xs:
+        if x not in ys:
+            zs.append(x)
+    return zs
+
+# no.10
+def intersect(xs,ys):
+    zs = []
+    for x in xs:
+        if x in ys:
+            zs.append(x)
+    return zs
+
+# no.11
+def equiv_class(ns):
+    ns.sort()
+    if ns == []:
+        return []
+    else:
+        top = ns[0]
+        nss = [[top]]
+        for n in ns[1:]:
+            pass # 이 부분을 채우자
+        return nss
