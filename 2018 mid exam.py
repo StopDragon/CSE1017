@@ -94,11 +94,19 @@ def intersect(xs,ys):
 # no.11
 def equiv_class(ns):
     ns.sort()
-    if ns == []:
+    if ns == [] :
         return []
-    else:
+    else :
         top = ns[0]
         nss = [[top]]
-        for n in ns[1:]:
-            pass # 이 부분을 채우자
+        for n in ns[1:] :
+            top = nss[-1][0]
+            if n == top :
+                tops = nss[-1]
+                nss = nss[:-1]
+                nss.append(tops+[n])
+            else :
+                nss.append([n])
         return nss
+
+# no.11 
