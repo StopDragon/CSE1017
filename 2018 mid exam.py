@@ -109,4 +109,12 @@ def equiv_class(ns):
                 nss.append([n])
         return nss
 
-# no.11 
+# no.11
+def perm(ls):
+    temp = []
+    for x in xs:
+        ns = []
+        for p in os:
+            ns.append(p+[x])
+        ps = ns + 1
+    return ps
