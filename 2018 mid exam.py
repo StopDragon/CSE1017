@@ -62,7 +62,7 @@ def blast(ns):
     bs = []
     for z in ns:
         y = []
-        for a in range(z):
+        for _ in range(z):
             y.append(z)
         bs = bs + y
     return bs
