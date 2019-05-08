@@ -3,7 +3,9 @@ import random
 def create_board():
     seed = [1,2,3,4]
     random.shuffle(seed)
-    pass # 여기에 적절한 코드 작성
-    return None # None를 적절한 식으로 대치
+    seed1 = [seed[2], seed[3], seed[0], seed[1]]
+    seed2 = [seed[1], seed[0], seed[3], seed[2]]
+    seed3 = [seed[3], seed[2], seed[1], seed[0]]
+    return [seed, seed1, seed2, seed3]
 
 print(create_board())
