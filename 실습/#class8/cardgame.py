@@ -50,28 +50,3 @@ def more(message):
     while not (answer == 'y' or answer == 'n'):
         answer = input(message)
     return answer == 'y'
-
-def blackjack():
-    print("Welcome to SMaSH Casino!")
-    deck = fresh_deck() # deck 구성
-    chips = 0 # 점수 초기화
-    dealer = []
-    player = []
-    card, deck = hit(deck) # 1장 뽑아서
-    player.append(card) # 손님에게 주고
-    card, deck = hit(deck) # 1장 뽑아서
-    dealer.append(card) # 딜러에게 주고
-    card, deck = hit(deck) # 1장 뽑아서
-    player.append(card) # 손님에게 주고
-    card, deck = hit(deck) # 1장 뽑아서
-    dealer.append(card) # 딜러에게 준다.
-    # 딜러의 첫 카드를 제외하고 모두 보여준다.
-    print("My cards are:")
-    print(" ", "****", "**")
-    print(" ", dealer[1]["suit"], dealer[1]["rank"])
-    # 손님의 카드를 보여준다.
-    show_cards(player, "Your cards are:")
-    # 손님 카드 합 계산
-    score_player = count_score(player)
-    score_dealer = count_score(dealer)
-    if score_player == 21:
