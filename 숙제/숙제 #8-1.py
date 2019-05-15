@@ -43,7 +43,7 @@ def count_score(cards):
 def show_cards(cards,message):
     print(message)
     for card in cards:
-        print(card.get('suit'), card.get('rank'))
+        print(" ", card.get('suit'), card.get('rank'))
 
 def more(message):
     answer = input(message)
@@ -75,3 +75,46 @@ def blackjack():
     score_player = count_score(player)
     score_dealer = count_score(dealer)
     if score_player == 21:
+        chips += 1
+        print('Blackjack! You won.')
+    else: 
+        while (score_player < 21 and more('Hit? (y/n)')):
+            card, deck = hit(deck)
+            player.append(card)
+            score_player = count_score(player)
+            score_dealer = count_score(dealer)
+            print("My cards are:")
+            print(" ", "****", "**")
+            print(" ", dealer[1]["suit"], dealer[1]["rank"])
+            show_cards(player, "Your cards are:")
+        if score_player > 21:
+            chips -= 1
+            print('You bust! I won.')
+        else:
+            if score_dealer <= 16:
+                card, deck = hit(deck) # 1장 뽑아서
+                dealer.append(card) # 딜러에게 준다.
+                score_player = count_score(player)
+                score_dealer = count_score(dealer)
+            else:
+                if score_dealer > 21:
+                    chips += 1
+                    print('I bust! You won.')
+                else:
+                    if score_dealer == score_player:
+                        print('We draw.')
+                    else:
+                        if score_player > score_dealer:
+                            chips += 1
+                            print('Yon won.')
+                        else:
+                            chips -= 1
+                            print('I won.')
+    print('chips = ', chips)
+    if more('Play more? (y/n)'):
+        print('-----')
+
+    else:
+        print('Bye!')
+
+print(blackjack())
