@@ -90,6 +90,12 @@ def blackjack():
                     print('chips = ', chips)
                     play_more = more('Play more? (y/n)')
                     break
+                if score_player == 21:
+                    chips += 2
+                    print('Blackjack! You won.')
+                    print('chips = ', chips)
+                    play_more = more('Play more? (y/n)')
+                    break
                 hit_more = more('Hit? (y/n)')
             else:    
                 while score_dealer <= 16:
