@@ -118,6 +118,6 @@ def blackjack():
                         print('I won.')
                         print('chips = ', chips)
                         play_more = more('Play more? (y/n)')                   
-    return 'Bye!'
+    print('Bye!')
 
-print(blackjack())
+blackjack()
