@@ -16,34 +16,28 @@ def hit(deck):
     # deck이 비어있으면
     # 카드 1벌을 새로 만듬
     if deck == []:
-        fresh_deck()
-        card = deck[0]
-        deck = deck[1:]
-        return (card, deck)
-    else:
-        card = deck[0]
-        deck = deck[1:]
-    return (card, deck) # (맨 앞의 카드 한장 , 남은 deck)
+        deck = fresh_deck()
+    return (deck[0], deck[1:])
 
 def count_score(cards):
     score = 0
     number_of_ace = 0
     for card in cards:
-        if card.get('rank') == 'J' or card.get('rank') == 'Q' or card.get('rank') == 'K':
+        if (card.get('rank') == 'J') or (card.get('rank') == 'Q') or (card.get('rank') == 'K'):
             score = score + 10
-        elif card.get('rank') == 'A':
+        elif (card.get('rank') == 'A'):
             number_of_ace = number_of_ace + 1
-            score = score + 11
-        elif 2 <= card.get('rank') <= 9:
+            score += 11
+        else:
             score = score + card.get('rank')
-    while score > 21:
-        score = score - 10
+    if (score > 21) and (number_of_ace >= 1):
+        score -= 10
     return score
 
 def show_cards(cards,message):
     print(message)
     for card in cards:
-        print(card.get('suit'), card.get('rank'))
+        print(" ", card.get('suit'), card.get('rank'))
 
 def more(message):
     answer = input(message)
