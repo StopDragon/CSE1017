@@ -27,53 +27,48 @@ def blackjack():
         score_player = count_score(player)
         score_dealer = count_score(dealer)
         if score_player == 21:
-            chips += 1
+            chips += 2
             print('Blackjack! You won.')
             print('chips = ', chips)
             play_more = more('Play more? (y/n)')
-            
-        else: 
-            while (score_player < 21 and more('Hit? (y/n)')):
+        else:
+            hit_more = more('Hit? (y/n)')
+            while hit_more == True:
                 card, deck = hit(deck)
                 player.append(card)
                 score_player = count_score(player)
-                score_dealer = count_score(dealer)
-                print("My cards are:")
-                print(" ", "****", "**")
-                print(" ", dealer[1]["suit"], dealer[1]["rank"])
+                print(" ", card["suit"], card["rank"])
                 show_cards(player, "Your cards are:")
-            if score_player > 21:
-                chips -= 1
-                print('You bust! I won.')
-                print('chips = ', chips)
-                play_more = more('Play more? (y/n)')
-                
-            else:
+                if score_player > 21:
+                    chips -= 1
+                    print('You bust! I won.')
+                    print('chips = ', chips)
+                    play_more = more('Play more? (y/n)')
+                    break
+                hit_more = more('Hit? (y/n)')
+            else:    
                 while score_dealer <= 16:
                     card, deck = hit(deck) # 1장 뽑아서
-                    dealer.append(card) # 딜러에게 준다.
-                    score_player = count_score(player)
+                    dealer.append(card) # 딜러에게 준다.                    
                     score_dealer = count_score(dealer)
-                
-                while score_dealer > 21:
+                show_cards(dealer, 'My cards are:')
+
+                if score_dealer > 21:
                     chips += 1
                     print('I bust! You won.')
                     print('chips = ', chips)
                     play_more = more('Play more? (y/n)')
-                        
-                if score_dealer == score_player:
-                    print('We draw.')
-                    print('chips = ', chips)
-                    play_more = more('Play more? (y/n)')
-                        
                 else:
-                    if score_player > score_dealer:
+                    if score_dealer == score_player:
+                        print('We draw.')
+                        print('chips = ', chips)
+                        play_more = more('Play more? (y/n)')
+                    elif score_player > score_dealer:
                         chips += 1
                         print('Yon won.')
                         print('chips = ', chips)
                         play_more = more('Play more? (y/n)')
-                
-                    else:
+                    elif score_player < score_dealer:
                         chips -= 1
                         print('I won.')
                         print('chips = ', chips)
