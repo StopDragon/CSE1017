@@ -13,23 +13,19 @@ def login(members):
     trypasswd = input("Enter your password: ")
     if members.get(username):
         if (trypasswd == members[username][0]):
-            tries = members[username][1]
-            wins = members[username][2]
-            chips = members[username][3]
             # username의 게임시도 횟수와 이긴 횟수를 members에서 가져와 보여준다.
-            print('You played', str(chips), 'games and won', str(wins), 'of them.')
+            print('You played', str(members[username][1]), 'games and won', str(members[username][2]), 'of them.')
             # 승률 계산하여 %로 보여줌 (분모가 0인 오류 방지해야 함)
-            print('Your all-time winning percentage is', divide(wins, tries), '%')
+            print('Your all-time winning percentage is', str(divide(members[username][2], members[username][1])), '%')
             # 칩 보유개수를 보여줌
-            if chips >= 0:
-                print('You have', str(chips), 'chips.')
+            if (members[username][3] >= 0):
+                print('You have', str(members[username][3]), 'chips.')
             else:
-                print('You owe', abs(str(chips)), 'chips.')
-            return username, tries, wins, chips, members
+                print('You owe', str(abs(members[username][3])), 'chips.')
         else:
             return login(members)
     else:
-        members[username] = (username, 0, 0, 0)
+        members[username] = (username, 0,0,0)
         # username을 members 사전에 추가한다.
         return username, 0, 0, 0, members
 
