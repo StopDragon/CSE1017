@@ -25,5 +25,4 @@ def login(members):
             return login(members)
     else:
         members[username] = (username, 0,0,0)
-        # username을 members 사전에 추가한다.
         return username, 0, 0, 0, members
