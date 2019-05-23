@@ -44,3 +44,63 @@ def more(message):
     while not (answer == 'y' or answer == 'n'):
         answer = input(message)
     return answer == 'y'
+
+def divide(x,y):
+    if y > 0:
+        return "{0:.1f}".format(((x/y)*100))
+    else:
+        return 0
+
+def show_top5(members):
+    print("-----")
+    sorted_members = sorted(members.items(),key=lambda x: x[1][3],reverse=True)
+    num = 1
+    print("All-time Top 5 based on the number of chips earned")
+    for name in sorted_members:
+        if name[1][3] > 0:
+            if num <= 5:
+                print(num,'. ', name[0], ' : ', name[1][3],sep='')
+                num += 1
+
+def store_members(members):
+    file = open("members.txt","w")
+    names = members.keys()
+    for name in names:
+        passwd, tries, wins, chips = members[name]
+        line = name + ',' + passwd + ',' + \
+               str(tries) + ',' + str(wins) + "," + str(chips) + '\n'              
+        file.write(line)
+    file.close()
+
+def load_members():
+    file = open("members.txt","r")
+    members = {}
+    for line in file:
+        name, passwd, tries, wins, chips = line.strip('\n').split(',')
+        members[name] = (passwd,int(tries),float(wins),int(chips))
+    file.close()
+    return members
+
+def login(members):
+    username = input("Enter your name: (4 letters max) ")
+    while len(username) > 4:
+        username = input("Enter your name: (4 letters max) ")
+    trypasswd = input("Enter your password: ")
+    if members.get(username):
+        if trypasswd == members[username][0]:  ##<trypasswd가 username의 비밀번호와 일치한다>:
+            tries = members[username][1]
+            wins = members[username][2]
+            chips = members[username][3]
+            print('You played ' + str(tries) + ' games and won ' + str(wins) + ' of them.')
+            print('Your all-time winning percentage is ' + str(divide(wins,tries)) + ' %')
+            if chips >= 0:
+                print('You have ' + str(chips) + ' chips.')
+            else:
+                print('You owe ' + str(abs(chips)) + ' chips.')
+            return username, tries, wins, chips, members
+        else:
+            return login(members)
+    else:
+        members[username] = (trypasswd, 0,0,0)
+        return username, 0, 0, 0, members
+
