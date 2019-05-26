@@ -3,6 +3,7 @@ from cardgame import *
 def blackjack():
     play_more = True
     print("Welcome to SMaSH Casino!")
+    print('Powerd by Jung Ji Yong')
     username, tries, wins, chips, members = login(load_members())
     deck = fresh_deck() # deck 구성
     twin = 0
@@ -33,7 +34,7 @@ def blackjack():
             chips += 2
             twin += 1
             print('Blackjack! You won.')
-            print('chips = ', chips)
+            print('chips =', chips)
             play_more = more('Play more? (y/n)')
         else:
             hit_more = more('Hit? (y/n)')
@@ -46,14 +47,14 @@ def blackjack():
                 if score_player > 21:
                     chips -= 1
                     print('You bust! I won.')
-                    print('chips = ', chips)
+                    print('chips =', chips)
                     play_more = more('Play more? (y/n)')
                     break
                 if score_player == 21:
                     chips += 2
                     twin += 1
                     print('Blackjack! You won.')
-                    print('chips = ', chips)
+                    print('chips =', chips)
                     play_more = more('Play more? (y/n)')
                     break
                 hit_more = more('Hit? (y/n)')
@@ -68,30 +69,32 @@ def blackjack():
                     chips += 1
                     twin += 1
                     print('I bust! You won.')
-                    print('chips = ', chips)
+                    print('chips =', chips)
                     play_more = more('Play more? (y/n)')
                 else:
                     if score_dealer == score_player:
                         print('We draw.')
-                        print('chips = ', chips)
+                        print('chips =', chips)
                         twin += 0.5
                         play_more = more('Play more? (y/n)')
                     elif score_player > score_dealer:
                         chips += 1
                         twin += 1
                         print('Yon won.')
-                        print('chips = ', chips)
+                        print('chips =', chips)
                         play_more = more('Play more? (y/n)')
                     elif score_player < score_dealer:
                         chips -= 1
                         print('I won.')
-                        print('chips = ', chips)
+                        print('chips =', chips)
                         play_more = more('Play more? (y/n)')
+
     print('You played', tgame ,'games and won', twin ,'of them.')
     print('Your winning pecentage today is', divide(twin,tgame),'%.')
     members[username] = (members[username][0],tries + tgame ,str(wins + twin), chips)
     store_members(members)
     show_top5(members)
+    print('-----')
     print('Bye!')
 
 blackjack()
